@@ -163,29 +163,53 @@ const outdoorMedia = [
 
 
 
-const catalogueDesign = [
-  { img: '/assets/catalogue/cat1.jpg', title: 'Fashion Lookbook', desc: 'Premium fashion catalogue design for apparel brands' },
-  { img: '/assets/catalogue/cat2.jpg', title: 'Product Brochure', desc: 'Elegant open brochure layout for product showcasing' },
-  { img: '/assets/catalogue/cat3.jpg', title: 'Pet Product Catalog', desc: 'Delivering happiness and care for your pets' },
-  { img: '/assets/catalogue/cat4.jpg', title: 'Beauty Catalogue', desc: 'Luxury beauty and skincare catalogue design' },
-  { img: '/assets/catalogue/cat5.jpg', title: 'Skincare Range', desc: 'Minimalist skincare product catalogue design' },
-  { img: '/assets/catalogue/cat6.jpg', title: 'Beauty Magazine', desc: 'Editorial magazine spread for beauty brands' },
-  { img: '/assets/catalogue/cat7.jpg', title: 'Furniture Catalogue', desc: 'Interior and furniture product brochure design' },
-  { img: '/assets/catalogue/cat8.jpg', title: 'Hardware Catalogue', desc: 'Solid brass mortise & pulls — product index design' },
-];
+// const catalogueDesign = [
+//   { img: '/assets/catalogue/cat1.jpg', title: 'Fashion Lookbook', desc: 'Premium fashion catalogue design for apparel brands' },
+//   { img: '/assets/catalogue/cat2.jpg', title: 'Product Brochure', desc: 'Elegant open brochure layout for product showcasing' },
+//   { img: '/assets/catalogue/cat3.jpg', title: 'Pet Product Catalog', desc: 'Delivering happiness and care for your pets' },
+//   { img: '/assets/catalogue/cat4.jpg', title: 'Beauty Catalogue', desc: 'Luxury beauty and skincare catalogue design' },
+//   { img: '/assets/catalogue/cat5.jpg', title: 'Skincare Range', desc: 'Minimalist skincare product catalogue design' },
+//   { img: '/assets/catalogue/cat6.jpg', title: 'Beauty Magazine', desc: 'Editorial magazine spread for beauty brands' },
+//   { img: '/assets/catalogue/cat7.jpg', title: 'Furniture Catalogue', desc: 'Interior and furniture product brochure design' },
+//   { img: '/assets/catalogue/cat8.jpg', title: 'Hardware Catalogue', desc: 'Solid brass mortise & pulls — product index design' },
+// ];
 
 
 
-const packagingDesign = [
-  { img: '/assets/package/pack1.png', title: 'Food Box Packaging', desc: 'Creative packaging design for food delivery brands' },
-  { img: '/assets/package/pack2.png', title: 'Vitamin Serum Bottles', desc: 'Premium vitamin C serum packaging design — Mysticity' },
-  { img: '/assets/package/pack3.png', title: 'FMCG Product Range', desc: 'Complete FMCG product line packaging — dairy & snacks' },
-  { img: '/assets/package/pack4.png', title: 'Nutrition Supplements', desc: 'Soul Nutritions — slim, strength, super greens range' },
-  { img: '/assets/package/pack5.png', title: 'Skincare Bottle Range', desc: 'Clean & minimal skincare packaging design' },
-];
+// const packagingDesign = [
+//   { img: '/assets/package/pack1.png', title: 'Food Box Packaging', desc: 'Creative packaging design for food delivery brands' },
+//   { img: '/assets/package/pack2.png', title: 'Vitamin Serum Bottles', desc: 'Premium vitamin C serum packaging design — Mysticity' },
+//   { img: '/assets/package/pack3.png', title: 'FMCG Product Range', desc: 'Complete FMCG product line packaging — dairy & snacks' },
+//   { img: '/assets/package/pack4.png', title: 'Nutrition Supplements', desc: 'Soul Nutritions — slim, strength, super greens range' },
+//   { img: '/assets/package/pack5.png', title: 'Skincare Bottle Range', desc: 'Clean & minimal skincare packaging design' },
+// ];
 
 
 // ─── Responsive Celebrity Shoot Auto-Slide Carousel ─────────────────────────────────────
+
+
+const catalogueDesign = [
+  { slug: 'fashion-lookbook',    img: '/assets/catalogue/cat1.jpg', title: 'Fashion Lookbook',    desc: 'Premium fashion catalogue design for apparel brands' },
+  { slug: 'product-brochure',    img: '/assets/catalogue/cat2.jpg', title: 'Product Brochure',    desc: 'Elegant open brochure layout for product showcasing' },
+  { slug: 'pet-product-catalog', img: '/assets/catalogue/cat3.jpg', title: 'Pet Product Catalog', desc: 'Delivering happiness and care for your pets' },
+  { slug: 'beauty-catalogue',    img: '/assets/catalogue/cat4.jpg', title: 'Beauty Catalogue',    desc: 'Luxury beauty and skincare catalogue design' },
+  { slug: 'skincare-range',      img: '/assets/catalogue/cat5.jpg', title: 'Skincare Range',      desc: 'Minimalist skincare product catalogue design' },
+  { slug: 'beauty-magazine',     img: '/assets/catalogue/cat6.jpg', title: 'Beauty Magazine',     desc: 'Editorial magazine spread for beauty brands' },
+  { slug: 'furniture-catalogue', img: '/assets/catalogue/cat7.jpg', title: 'Furniture Catalogue', desc: 'Interior and furniture product brochure design' },
+  { slug: 'hardware-catalogue',  img: '/assets/catalogue/cat8.jpg', title: 'Hardware Catalogue',  desc: 'Solid brass mortise & pulls — product index design' },
+];
+
+
+const packagingDesign = [
+  { slug: 'food-box-packaging',    img: '/assets/package/pack1.png', title: 'Food Box Packaging',    desc: 'Creative packaging design for food delivery brands' },
+  { slug: 'vitamin-serum-bottles', img: '/assets/package/pack2.png', title: 'Vitamin Serum Bottles', desc: 'Premium vitamin C serum packaging design — Mysticity' },
+  { slug: 'fmcg-product-range',    img: '/assets/package/pack3.png', title: 'FMCG Product Range',    desc: 'Complete FMCG product line packaging — dairy & snacks' },
+  { slug: 'nutrition-supplements', img: '/assets/package/pack4.png', title: 'Nutrition Supplements', desc: 'Soul Nutritions — slim, strength, super greens range' },
+  { slug: 'skincare-bottle-range', img: '/assets/package/pack5.png', title: 'Skincare Bottle Range', desc: 'Clean & minimal skincare packaging design' },
+];
+
+
+
 function CelebCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
@@ -297,110 +321,6 @@ function CelebCarousel() {
     </div>
   );
 }
-
-// ─── Quick Contact Form ───────────────────────────────────────────────────────
-// function QuickContactForm() {
-//   const [form, setForm] = useState({ name: '', email: '', phone: '', city: '', company: '', designation: '' });
-//   const [loading, setLoading] = useState(false);
-//   const [isMobile, setIsMobile] = useState(false);
-
-//   useEffect(() => {
-//     const handleResize = () => setIsMobile(window.innerWidth < 768);
-//     handleResize();
-//     window.addEventListener('resize', handleResize);
-//     return () => window.removeEventListener('resize', handleResize);
-//   }, []);
-
-//   const inputStyle = {
-//     border: 'none', 
-//     borderBottom: '1px solid #bbb',
-//     background: 'transparent', 
-//     fontFamily: 'Georgia, serif',
-//     fontSize: 13, 
-//     color: '#1a1a1a', 
-//     padding: '8px 0',
-//     outline: 'none', 
-//     width: '100%',
-//   };
-
-//   // Naya wala lagao:
-// const handleSubmit = async (e) => {
-//   e.preventDefault();
-//   if (!form.name || !form.email || !form.phone) {
-//     toast.error('Please fill required fields');
-//     return;
-//   }
-//   setLoading(true);
-//   try {
-//     await contactService.submitQuickContactForm(form);
-//     toast.success("Thank you! We'll be in touch shortly.");
-//     setForm({ name: '', email: '', phone: '', city: '', company: '', designation: '' });
-//   } catch (error) {
-//     toast.error('Something went wrong. Please try again.');
-//   } finally {
-//     setLoading(false);
-//   }
-// };
-
-
-//   return (
-//     <div style={{ border: '1px solid #ddd', padding: '28px 28px 32px', fontFamily: 'Georgia, serif' }}>
-//       <p style={{ fontSize: 14, fontWeight: 700, textAlign: 'center', margin: '0 0 10px', color: '#1a1a1a' }}>
-//         Fill in your details and you'll hear from us shortly!
-//       </p>
-//       <div style={{ width: 40, height: 2, background: gold, margin: '0 auto 24px' }} />
-//       <form onSubmit={handleSubmit}>
-//         <div style={{ 
-//           display: 'grid', 
-//           gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', 
-//           gap: isMobile ? 16 : '0 24px', 
-//           marginBottom: 20 
-//         }}>
-//           <input placeholder="Name*" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} style={inputStyle} />
-//           <input placeholder="E-mail*" type="email" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} style={inputStyle} />
-//         </div>
-//         <div style={{ 
-//           display: 'grid', 
-//           gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', 
-//           gap: isMobile ? 16 : '0 24px', 
-//           marginBottom: 20 
-//         }}>
-//           <input placeholder="Contact No.*" value={form.phone} onChange={e => setForm({ ...form, phone: e.target.value })} style={inputStyle} />
-//           <input placeholder="City" value={form.city} onChange={e => setForm({ ...form, city: e.target.value })} style={inputStyle} />
-//         </div>
-//         <div style={{ 
-//           display: 'grid', 
-//           gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', 
-//           gap: isMobile ? 16 : '0 24px', 
-//           marginBottom: 28 
-//         }}>
-//           <input placeholder="Your Company Name*" value={form.company} onChange={e => setForm({ ...form, company: e.target.value })} style={inputStyle} />
-//           <input placeholder="Designation*" value={form.designation} onChange={e => setForm({ ...form, designation: e.target.value })} style={inputStyle} />
-//         </div>
-//         <button
-//           type="submit"
-//           disabled={loading}
-//           style={{
-//             background: gold, 
-//             color: '#fff', 
-//             border: 'none',
-//             padding: '11px 32px', 
-//             fontSize: 11, 
-//             fontWeight: 700,
-//             textTransform: 'uppercase', 
-//             letterSpacing: 2,
-//             cursor: loading ? 'not-allowed' : 'pointer',
-//             fontFamily: 'Georgia, serif', 
-//             opacity: loading ? 0.7 : 1,
-//             width: isMobile ? '100%' : 'auto',
-//           }}
-//         >
-//           {loading ? 'SENDING...' : 'SUBMIT'}
-//         </button>
-//       </form>
-//     </div>
-//   );
-// }
 
 
 // ─── Quick Contact Form ───────────────────────────────────────────────────────
@@ -894,7 +814,7 @@ export default function Home() {
           gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)',
           gap: isMobile ? 8 : 4,
         }}>
-          {catalogueDesign.map((c, i) => (
+          {/* {catalogueDesign.map((c, i) => (
             <div
               key={i}
               style={{ position: 'relative', aspectRatio: '4/3', overflow: 'hidden', borderRadius: isMobile ? 8 : 0, cursor: 'pointer' }}
@@ -923,7 +843,38 @@ export default function Home() {
                 <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.8)', margin: 0, lineHeight: 1.5 }}>{c.desc}</p>
               </div>
             </div>
-          ))}
+          ))} */}
+          {catalogueDesign.map((c, i) => (
+  <Link key={i} href={`/catalogue/${c.slug}`} style={{ textDecoration: 'none', display: 'block' }}>
+    <div
+      style={{ position: 'relative', aspectRatio: '4/3', overflow: 'hidden', borderRadius: isMobile ? 8 : 0, cursor: 'pointer' }}
+      onMouseOver={(e) => { if (!isMobile) e.currentTarget.querySelector('.cat-overlay').style.opacity = 1; }}
+      onMouseOut={(e) => { if (!isMobile) e.currentTarget.querySelector('.cat-overlay').style.opacity = 0; }}
+    >
+      <img
+        src={c.img}
+        alt={c.title}
+        style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.4s' }}
+        onMouseOver={(e) => { if (!isMobile) e.currentTarget.style.transform = 'scale(1.05)'; }}
+        onMouseOut={(e) => { if (!isMobile) e.currentTarget.style.transform = 'scale(1)'; }}
+      />
+      <div
+        className="cat-overlay"
+        style={{
+          position: 'absolute', inset: 0,
+          background: 'rgba(20,18,14,0.62)',
+          display: 'flex', flexDirection: 'column', justifyContent: 'flex-end',
+          padding: 16,
+          opacity: isMobile ? 1 : 0,
+          transition: 'opacity 0.3s',
+        }}
+      >
+        <p style={{ fontSize: 13, fontWeight: 700, color: '#fff', margin: '0 0 5px', lineHeight: 1.3 }}>{c.title}</p>
+        <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.8)', margin: 0, lineHeight: 1.5 }}>{c.desc}</p>
+      </div>
+    </div>
+  </Link>
+))}
         </div>
       </Section>
 
@@ -935,7 +886,7 @@ export default function Home() {
           gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(5, 1fr)',
           gap: isMobile ? 8 : 4,
         }}>
-          {packagingDesign.map((c, i) => (
+          {/* {packagingDesign.map((c, i) => (
             <div
               key={i}
               style={{ position: 'relative', aspectRatio: isMobile ? '4/3' : '3/4', overflow: 'hidden', borderRadius: isMobile ? 8 : 0, cursor: 'pointer' }}
@@ -964,7 +915,40 @@ export default function Home() {
                 <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.8)', margin: 0, lineHeight: 1.5 }}>{c.desc}</p>
               </div>
             </div>
-          ))}
+          ))} */}
+
+
+          {packagingDesign.map((c, i) => (
+  <Link key={i} href={`/packaging/${c.slug}`} style={{ textDecoration: 'none', display: 'block' }}>
+    <div
+      style={{ position: 'relative', aspectRatio: isMobile ? '4/3' : '3/4', overflow: 'hidden', borderRadius: isMobile ? 8 : 0, cursor: 'pointer' }}
+      onMouseOver={(e) => { if (!isMobile) e.currentTarget.querySelector('.pkg-overlay').style.opacity = 1; }}
+      onMouseOut={(e) => { if (!isMobile) e.currentTarget.querySelector('.pkg-overlay').style.opacity = 0; }}
+    >
+      <img
+        src={c.img}
+        alt={c.title}
+        style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.4s' }}
+        onMouseOver={(e) => { if (!isMobile) e.currentTarget.style.transform = 'scale(1.05)'; }}
+        onMouseOut={(e) => { if (!isMobile) e.currentTarget.style.transform = 'scale(1)'; }}
+      />
+      <div
+        className="pkg-overlay"
+        style={{
+          position: 'absolute', inset: 0,
+          background: 'rgba(20,18,14,0.62)',
+          display: 'flex', flexDirection: 'column', justifyContent: 'flex-end',
+          padding: 16,
+          opacity: isMobile ? 1 : 0,
+          transition: 'opacity 0.3s',
+        }}
+      >
+        <p style={{ fontSize: 13, fontWeight: 700, color: '#fff', margin: '0 0 5px', lineHeight: 1.3 }}>{c.title}</p>
+        <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.8)', margin: 0, lineHeight: 1.5 }}>{c.desc}</p>
+      </div>
+    </div>
+  </Link>
+))}
         </div>
       </Section>
 

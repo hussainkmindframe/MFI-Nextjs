@@ -172,6 +172,7 @@ export const updateBlog = asyncHandler(async (req, res, next) => {
   });
 });
 
+
 /**
  * @desc    Delete blog (Admin only)
  * @route   DELETE /api/blogs/:id
@@ -256,7 +257,7 @@ export const uploadImage = asyncHandler(async (req, res, next) => {
     return next(new ErrorResponse('No file uploaded', 400));
   }
 
-  
+
   // Get the secure HTTPS URL from Cloudinary response
   const imageUrl = req.file.secure_url || req.file.path || req.file.url;
   const imagePublicId = req.file.public_id || req.file.filename || extractPublicIdFromUrl(imageUrl);
