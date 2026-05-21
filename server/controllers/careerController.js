@@ -2,12 +2,12 @@
  * Career Controller
  * Handles all job application business logic
  */
-
 import Career from '../models/Career.js';
-import { resumeUpload } from '../config/cloudinary.js';
+import { resumeUpload,cloudinary  } from '../config/cloudinary.js';
 import { deleteCloudinaryResource, extractPublicIdFromUrl } from '../utils/cloudinaryUtils.js';
 import https from 'https';
 import http from 'http';
+import { Readable } from 'stream';
 
 // Export the Cloudinary resume upload middleware
 export const upload = resumeUpload;
@@ -87,26 +87,27 @@ export const downloadResume = async (req, res, next) => {
     const originalName = application.resumeOriginalName || 'resume.pdf';
     const filename = originalName.endsWith('.pdf') ? originalName : `${originalName}.pdf`;
 
+    const response = await fetch(fileUrl);
+    if (!response.ok) {
+      console.error(`Failed to fetch resume from storage. Status: ${response.status} ${response.statusText}`);
+      return res.status(502).json({ success: false, message: 'Failed to fetch resume from storage' });
+    }
+
     res.setHeader('Content-Type', 'application/pdf');
     res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
 
-    // Use top-level imported https/http — no dynamic import needed
-    const protocol = fileUrl.startsWith('https') ? https : http;
-
-    protocol.get(fileUrl, (fileRes) => {
-      if (fileRes.statusCode !== 200) {
-        return res.status(502).json({ success: false, message: 'Failed to fetch resume from storage' });
-      }
-      fileRes.pipe(res);
-    }).on('error', (err) => {
-      console.error('Resume proxy error:', err);
-      next(err);
-    });
+    const nodeStream = Readable.fromWeb(response.body);
+    nodeStream.pipe(res);
 
   } catch (error) {
+    console.error('Resume proxy error:', error);
     next(error);
   }
 };
+
+
+
+
 
 /**
  * @desc    Get all applications

@@ -165,32 +165,46 @@ function CareerModal({ application, onClose, onStatusChange, onDelete }) {
           </div>
 
           {/* Resume — proxy download via backend */}
-          {application.resumeOriginalName && (
-            <div style={{ background: '#f8f9fa', borderRadius: '10px', padding: '12px 14px' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', minWidth: 0 }}>
-                  <MdDescription style={{ color: gold, fontSize: '18px', flexShrink: 0 }} />
-                  <span style={{ fontSize: '13px', color: THEME.text, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                    {application.resumeOriginalName}
-                  </span>
-                </div>
-                {/* ✅ Backend proxy — same-origin, downloads as proper PDF */}
-                <a
-href={application.resumeUrl}
-target="_blank"
-                  style={{
-                    fontSize: '11px', color: gold, textDecoration: 'none',
-                    display: 'flex', alignItems: 'center', gap: '3px',
-                    fontWeight: '600', flexShrink: 0, marginLeft: '12px',
-                  }}
-                  onMouseEnter={e => e.currentTarget.style.color = '#b8943a'}
-                  onMouseLeave={e => e.currentTarget.style.color = gold}
-                >
-                  <MdDownload style={{ fontSize: '14px' }} /> Download
-                </a>
-              </div>
-            </div>
-          )}
+     {application.resumeOriginalName && (
+  <div style={{ background: '#f8f9fa', borderRadius: '10px', padding: '12px 14px' }}>
+    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', minWidth: 0 }}>
+        <MdDescription style={{ color: gold, fontSize: '18px', flexShrink: 0 }} />
+        <span style={{ fontSize: '13px', color: THEME.text, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+          {application.resumeOriginalName}
+        </span>
+      </div>
+      {/* ✅ Backend proxy download */}
+      <button
+        onClick={async () => {
+          try {
+            const res = await apiClient.get(`/career/${application._id}/download`, { responseType: 'blob' });
+            const url = window.URL.createObjectURL(new Blob([res.data], { type: 'application/pdf' }));
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', application.resumeOriginalName || 'resume.pdf');
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+            window.URL.revokeObjectURL(url);
+          } catch (err) {
+            toast.error('Download failed');
+          }
+        }}
+        style={{
+          fontSize: '11px', color: gold, background: 'none', border: 'none',
+          display: 'flex', alignItems: 'center', gap: '3px',
+          fontWeight: '600', flexShrink: 0, marginLeft: '12px',
+          cursor: 'pointer', fontFamily: THEME.font,
+        }}
+        onMouseEnter={e => e.currentTarget.style.color = '#b8943a'}
+        onMouseLeave={e => e.currentTarget.style.color = gold}
+      >
+        <MdDownload style={{ fontSize: '14px' }} /> Download
+      </button>
+    </div>
+  </div>
+)}
 
           {/* Applied At */}
           <div style={{ background: '#f8f9fa', borderRadius: '10px', padding: '12px 14px' }}>
