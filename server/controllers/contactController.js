@@ -7,14 +7,6 @@ import nodemailer from 'nodemailer';
 import Contact from '../models/Contact.js';
 
 
-// const transporter = nodemailer.createTransport({
-//   service: 'gmail',
-//   auth: {
-//     user: process.env.MAIL_USER,
-//     pass: process.env.MAIL_PASS,
-//   },
-// });
-
 
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,       
@@ -25,6 +17,18 @@ const transporter = nodemailer.createTransport({
     pass: process.env.SMTP_PASS,
   },
 });
+
+
+
+// ✅ Transporter verify karo — server start hone pe pata chalega SMTP connected hai ya nahi
+transporter.verify((error, success) => {
+  if (error) {
+    console.error('❌ SMTP Connection Failed:', error.message);
+  } else {
+    console.log('✅ SMTP Server Ready — Mails bhej sakte hain');
+  }
+});
+
 
 /**
  * @desc    Create new contact submission
@@ -158,6 +162,7 @@ export const getContactById = async (req, res, next) => {
   }
 };
 
+
 /**
  * @desc    Update contact status
  * @route   PUT /api/contact/:id/status
@@ -197,6 +202,8 @@ export const updateContactStatus = async (req, res, next) => {
   }
 };
 
+
+
 /**
  * @desc    Delete contact submission
  * @route   DELETE /api/contact/:id
@@ -221,6 +228,9 @@ export const deleteContact = async (req, res, next) => {
     next(error);
   }
 };
+
+
+
 
 /**
  * @desc    Get contact statistics
@@ -268,11 +278,6 @@ export const getContactStats = async (req, res, next) => {
 
 
 
-
-
-
-
-
 /**
  * @desc    Submit quick contact form — sends email via Nodemailer (no DB)
  * @route   POST /api/contact/quick
@@ -291,7 +296,8 @@ export const submitQuickContact = async (req, res, next) => {
 
     const mailOptions = {
       from: `"Mind Frame India Website" <${process.env.SMTP_USER}>`,
-      to: "hussainkhan5march@gmail.com",
+      to: "msali@mindframeindia.com",
+      cc: "seo@mindframeindia.com",
       replyTo: email,
       subject: `New Lead: ${name} — ${company || 'No Company'}`,
       html: `
@@ -320,7 +326,56 @@ export const submitQuickContact = async (req, res, next) => {
 };
 
 
+// export const submitQuickContact = async (req, res, next) => {
+//   try {
+//     const { name, email, phone, city, company, designation } = req.body;
 
+//     console.log('📩 Quick Contact Request aaya:', { name, email, phone, city, company, designation });
+
+//     if (!name || !email || !phone) {
+//       console.warn('⚠️ Validation fail — required fields missing');
+//       return res.status(400).json({
+//         success: false,
+//         message: 'Name, email and phone are required.',
+//       });
+//     }
+
+//     const mailOptions = {
+//       from: `"Mind Frame India Website" <${process.env.SMTP_USER}>`,
+//       to: "abdullahansari982076@gmail.com",
+  
+//       replyTo: email,
+//       subject: `New Lead: ${name} — ${company || 'No Company'}`,
+//       html: `...same as before...`,
+//     };
+
+//     console.log('📤 Mail bhejne ki koshish ho rahi hai...', {
+//       from: mailOptions.from,
+//       to: mailOptions.to,
+//       subject: mailOptions.subject,
+//     });
+
+//     const info = await transporter.sendMail(mailOptions);
+
+//     console.log('✅ Mail successfully bheja gaya!', {
+//       messageId: info.messageId,
+//       response: info.response,
+//     });
+
+//     return res.status(200).json({
+//       success: true,
+//       message: "Thank you! We'll be in touch shortly.",
+//     });
+
+//   } catch (error) {
+//     console.error('❌ Mail bhejne mein error aaya:', {
+//       message: error.message,
+//       code: error.code,         // e.g. ECONNREFUSED, EAUTH
+//       command: error.command,   // e.g. AUTH, DATA
+//     });
+//     next(error);
+//   }
+// };
 
 
 
@@ -345,11 +400,63 @@ export const submitServiceContact = async (req, res, next) => {
 
     const mailOptions = {
       from: `"Mind Frame India Website" <${process.env.SMTP_USER}>`,
-      to: "hussainkhan5march@gmail.com",
+      to: "msali@mindframeindia.com",
+      cc: "seo@mindframeindia.com",
       replyTo: email,
       subject: `New Service Enquiry: ${name} — ${location}`,
       html: `
         <h2 style="color:#b08d57;font-family:Arial,sans-serif;">New Service Page Enquiry</h2>
+        <table cellpadding="10" style="border-collapse:collapse;width:100%;font-family:Arial,sans-serif;font-size:14px;">
+          <tr style="background:#f9f9f9"><td><strong>Name</strong></td><td>${name}</td></tr>
+          <tr><td><strong>Email</strong></td><td><a href="mailto:${email}">${email}</a></td></tr>
+          <tr style="background:#f9f9f9"><td><strong>Mobile</strong></td><td>${mobile}</td></tr>
+          <tr><td><strong>Location</strong></td><td>${location}</td></tr>
+          <tr style="background:#f9f9f9"><td><strong>Message</strong></td><td>${message}</td></tr>
+        </table>
+      `,
+    };
+
+    await transporter.sendMail(mailOptions);
+
+    return res.status(200).json({
+      success: true,
+      message: "Thank you! We'll be in touch shortly.",
+    });
+  } catch (error) {
+    console.error('Nodemailer error:', error);
+    next(error);
+  }
+};
+
+
+
+
+
+
+/**
+ * @desc    Submit [PageName] contact form
+ * @route   POST /api/contact/[pagename]
+ * @access  Public
+ */
+export const submitTelevisionContact = async (req, res, next) => {
+  try {
+    const { name, email, mobile, location, message } = req.body;
+
+    if (!name || !email || !mobile || !location || !message) {
+      return res.status(400).json({
+        success: false,
+        message: 'All fields are required.',
+      });
+    }
+
+    const mailOptions = {
+      from: `"Mind Frame India Website" <${process.env.SMTP_USER}>`,
+      to: "msali@mindframeindia.com",
+      cc: "seo@mindframeindia.com",
+      replyTo: email,
+      subject: `New television Enquiry: ${name} — ${location}`,
+      html: `
+        <h2 style="color:#b08d57;font-family:Arial,sans-serif;">New [PageName] Page Enquiry</h2>
         <table cellpadding="10" style="border-collapse:collapse;width:100%;font-family:Arial,sans-serif;font-size:14px;">
           <tr style="background:#f9f9f9"><td><strong>Name</strong></td><td>${name}</td></tr>
           <tr><td><strong>Email</strong></td><td><a href="mailto:${email}">${email}</a></td></tr>

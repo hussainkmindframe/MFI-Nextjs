@@ -73,6 +73,18 @@ submitServiceContactForm: async (formData) => {
   }
 },
 
+
+
+submitTelevisionContactForm: async (formData) => {
+  try {
+    const response = await apiClient.post('/contact/television', formData);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+},
+
+
   /**
    * Submit quick contact form
    */
@@ -85,6 +97,8 @@ submitServiceContactForm: async (formData) => {
     }
   }
 };
+
+
 
 
 

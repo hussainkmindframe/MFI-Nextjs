@@ -8,6 +8,7 @@ import {
   getContactStats,
   submitQuickContact,
   submitServiceContact,
+    submitTelevisionContact,   // ← add karo
 } from '../controllers/contactController.js';
 
 const router = express.Router();
@@ -16,6 +17,7 @@ const router = express.Router();
 router.post('/contact', createContact);
 router.post('/contact/quick', submitQuickContact);       // ← pehle
 router.post('/contact/service', submitServiceContact);   // ← pehle
+router.post('/contact/television', submitTelevisionContact);  // ← add karo
 
 // ── Admin routes ──────────────────────────────────────────
 router.get('/contacts', getAllContacts);

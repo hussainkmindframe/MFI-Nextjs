@@ -110,7 +110,7 @@ export default function Television() {
   }
   setLoading(true);
   try {
-    await contactService.submitServiceContactForm(form);
+  await contactService.submitTelevisionContactForm(form);
     setSubmitted(true);
     setForm(initialForm);
     setTouched({});
