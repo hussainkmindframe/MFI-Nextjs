@@ -23,12 +23,14 @@ export const authService = {
     }
   },
 
+  
   getToken: () => {
     if (typeof window !== 'undefined') {
       return localStorage.getItem('authToken');
     }
     return null;
   },
+
 
   removeToken: () => {
     if (typeof window !== 'undefined') {
@@ -38,6 +40,7 @@ export const authService = {
     }
   },
 
+
   isAuthenticated: () => {
     if (typeof window !== 'undefined') {
       return !!localStorage.getItem('authToken');
@@ -45,5 +48,6 @@ export const authService = {
     return false;
   },
 };
+
 
 export default authService;

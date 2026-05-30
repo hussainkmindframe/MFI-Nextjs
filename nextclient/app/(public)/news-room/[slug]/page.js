@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { useState, use } from "react";
 
+
 // ── image imports ────────────────────────────────────────────────────────
 const img1  = "/assets/news-room/2016-1.jpg";
 const img2  = "/assets/news-room/2016-2.jpg";
@@ -30,6 +31,7 @@ const img22 = "/assets/news-room/2023-6.png";
 const img23 = "/assets/news-room/2024-1.jpg";
 const img24 = "/assets/news-room/2024-2.png";
 const img25 = "/assets/news-room/2024-3.jpg";
+
 
 // ── newsData ─────────────────────────────────────────────────────────────
 const newsData = {
@@ -424,8 +426,9 @@ export default function NewsRoomDetail({ params }) {
         .nr-image-slide img {
           width: 100%;
           height: 100%;
-          object-fit: cover;
+          object-fit: contain;
           display: block;
+          background: white;
         }
 
         .nr-arrow {
