@@ -272,39 +272,44 @@ const sections = [
 
 const faqs = [
   {
-    question: 'Is Mind Frame India one of the best television advertising agencies in Mumbai?',
+    question: 'Which is the best television advertising agency in Mumbai for TV commercials (TVCs)?',
     answer:
-      'Yes. Mind Frame India has been crafting high-impact TV ad campaigns since 2009. Our team of Creative Directors, filmmakers, and brand strategists has produced TVCs for leading brands across industries. From concept to final broadcast, we handle every stage of television advertising — scripting, production, media planning, and placement — making us one of Mumbai\'s most trusted names in TV advertising.',
+      'Mind Frame India is a leading television advertising agency in Mumbai, offering full-service TV commercial (TVC) production, scripting, media planning, and broadcast campaigns since 2009. Mind Frame India\'s team of creative directors and filmmakers has managed successful campaigns for top brands including Microsoft, HP, and Dell, establishing it as a highly trusted advertising agency in Mumbai.',
   },
   {
-    question: 'What TV ad campaigns and services does Mind Frame offer in Mumbai?',
+    question: 'What TV ad campaign production and media buying services does Mind Frame India offer?',
     answer:
-      'Mind Frame India offers end-to-end television campaign services including TVC concept development, scriptwriting, video production, post-production, 2D/3D animation integration, and media buying for regional and national TV channels. We have successfully delivered campaigns for brands across FMCG, real estate, retail, education, and healthcare sectors in Mumbai and beyond.',
+      'Mind Frame India provides end-to-end TV advertising services in Mumbai, including concept development, scriptwriting, video production, post-production, 2D and 3D animation, and media buying/planning. Mind Frame India coordinates campaigns across regional and national TV channels, servicing diverse sectors such as FMCG, real estate, retail, education, and healthcare.',
   },
   {
-    question: 'Why is Mind Frame India considered a leading branding company in Mumbai?',
+    question: 'Why is Mind Frame India a leading branding agency and company in Mumbai?',
     answer:
-      'Mind Frame India brings together brand strategists, art directors, copywriters, and concept designers who collaborate to build brands from the ground up. We offer complete brand identity services — including logo design, brand guidelines, visual language, packaging, and communication strategy — tailored to your market and audience. Our work for brands like Microsoft, HP, and Dell reflects our capability to deliver at the highest level.',
+      'Mind Frame India is considered a leading branding agency in Mumbai because it offers comprehensive, data-driven brand identity services including logo design, brand guidelines, visual language, packaging, and communication strategy. The agency collaborates with expert brand strategists, art directors, copywriters, and concept designers to build brands from the ground up, delivering high-impact branding solutions for global companies like Microsoft, Dell, and HP.',
   },
   {
     question: 'What digital marketing and advertising services does Mind Frame India provide in Mumbai?',
     answer:
-      'As a full-service Digital Marketing & Advertising Agency in Mumbai, Mind Frame India covers SEO, social media marketing, paid advertising (Google Ads, Meta Ads), content marketing, email campaigns, performance analytics, and influencer marketing. We blend data-driven strategies with creative storytelling to grow your brand visibility and generate measurable business results across all digital platforms.',
+      'Mind Frame India provides a full suite of digital marketing and advertising services in Mumbai, including search engine optimization (SEO), social media marketing, paid advertising (Google Ads, Meta Ads), content marketing, email marketing, performance analytics, and influencer campaigns. Mind Frame India combines data-driven digital strategies with creative brand storytelling to increase visibility and drive business conversions.',
   },
   {
-    question: 'Does Mind Frame India offer media buying and media planning services in Mumbai?',
+    question: 'How does Mind Frame India execute media planning and media buying in Mumbai?',
     answer:
-      'Absolutely. Our media buying team negotiates the best rates across TV, print, outdoor, digital, and radio platforms. We design customised media plans based on your target audience, campaign goals, and budget — ensuring maximum reach and ROI. Whether you need a hyperlocal Mumbai campaign or a pan-India rollout, Mind Frame handles the full media mix strategically.',
+      'Mind Frame India executes media planning and media buying by negotiating optimal advertising rates across TV, print, outdoor billboard, digital, and radio platforms. Mind Frame India designs customized media plans tailored to specific target demographics, campaign goals, and budgets, managing local Mumbai advertising as well as pan-India campaigns.',
   },
   {
-    question: 'What brand identity services does Mind Frame India offer as a branding agency in Mumbai?',
+    question: 'What corporate brand identity and logo design services does Mind Frame India provide?',
     answer:
-      'Mind Frame India offers comprehensive brand identity services including logo design, brand naming, tagline development, color palettes, typography systems, brand style guides, stationery, signage, and digital brand assets. We ensure your brand communicates consistently and confidently across every touchpoint — online and offline — building trust and recognition in the Mumbai market and nationally.',
+      'Mind Frame India provides comprehensive brand identity and logo design services, including brand naming, tagline development, color palettes, typography, brand style guides, stationery, signage, and digital assets. Mind Frame India ensures consistent visual communication across online and offline platforms, helping businesses establish brand recognition in Mumbai and across international markets.',
   },
   {
-    question: 'Does Mind Frame India provide Virtual Reality (AR & VR) solutions in Mumbai?',
+    question: 'Does Mind Frame India provide Augmented Reality (AR) and Virtual Reality (VR) solutions?',
     answer:
-      'Yes. Mind Frame India offers immersive AR (Augmented Reality) and VR (Virtual Reality) experiences for brands looking to stand out. From virtual product demos and 360° brand experiences to AR filters and interactive installations, our tech-creative team builds cutting-edge immersive solutions tailored to your marketing and communication objectives. We are one of the few agencies in Mumbai combining creative advertising with advanced immersive technology.',
+      'Yes, Mind Frame India provides interactive Augmented Reality (AR) and Virtual Reality (VR) solutions in Mumbai. The agency builds virtual product demonstrations, 360-degree brand experiences, AR filters, and interactive installations, merging creative advertising concepts with advanced immersive technology to drive consumer engagement.',
+  },
+  {
+    question: 'When was Mind Frame India established and where are its offices located?',
+    answer:
+      'Mind Frame India was established on October 6, 2009. The agency\'s head office is located in Andheri West, Mumbai, India. Mind Frame India also operates branch offices in Hyderabad (India), Dubai (UAE), and San Ramon, California (USA), offering global advertising and digital marketing solutions.',
   },
 ];
 
@@ -329,7 +334,7 @@ function SkillBar({ label, value, animate }) {
   );
 }
 
-function FAQItem({ question, answer }) {
+function FAQItem({ question, answer, index }) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -339,51 +344,58 @@ function FAQItem({ question, answer }) {
         padding: '0',
       }}
     >
-      <button
-        onClick={() => setOpen((prev) => !prev)}
-        aria-expanded={open}
-        style={{
-          width: '100%',
-          background: 'none',
-          border: 'none',
-          cursor: 'pointer',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          padding: '18px 0',
-          textAlign: 'left',
-          gap: 16,
-        }}
-      >
-        <span
+      <h3 style={{ margin: 0, padding: 0 }}>
+        <button
+          id={`faq-btn-${index}`}
+          aria-controls={`faq-panel-${index}`}
+          aria-expanded={open}
+          onClick={() => setOpen((prev) => !prev)}
           style={{
-            fontSize: 14,
-            fontWeight: 700,
-            color: '#1a1a1a',
-            fontFamily: 'Georgia, serif',
-            lineHeight: 1.5,
+            width: '100%',
+            background: 'none',
+            border: 'none',
+            cursor: 'pointer',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            padding: '18px 0',
+            textAlign: 'left',
+            gap: 16,
           }}
         >
-          {question}
-        </span>
-        <span
-          style={{
-            fontSize: 20,
-            color: gold,
-            fontWeight: 400,
-            flexShrink: 0,
-            transition: 'transform 0.3s ease',
-            display: 'inline-block',
-            transform: open ? 'rotate(45deg)' : 'rotate(0deg)',
-          }}
-        >
-          +
-        </span>
-      </button>
+          <span
+            style={{
+              fontSize: 14,
+              fontWeight: 700,
+              color: '#1a1a1a',
+              fontFamily: 'Georgia, serif',
+              lineHeight: 1.5,
+            }}
+          >
+            {question}
+          </span>
+          <span
+            style={{
+              fontSize: 20,
+              color: gold,
+              fontWeight: 400,
+              flexShrink: 0,
+              transition: 'transform 0.3s ease',
+              display: 'inline-block',
+              transform: open ? 'rotate(45deg)' : 'rotate(0deg)',
+            }}
+          >
+            +
+          </span>
+        </button>
+      </h3>
 
       <div
+        id={`faq-panel-${index}`}
+        aria-labelledby={`faq-btn-${index}`}
+        role="region"
         style={{
-          maxHeight: open ? '400px' : '0',
+          maxHeight: open ? '600px' : '0',
           overflow: 'hidden',
           transition: 'max-height 0.4s ease',
         }}
@@ -574,12 +586,105 @@ export default function About() {
 
           <div>
             {faqs.map((faq, i) => (
-              <FAQItem key={i} question={faq.question} answer={faq.answer} />
+              <FAQItem key={i} index={i} question={faq.question} answer={faq.answer} />
             ))}
           </div>
         </div>
       </div>
       </div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "AboutPage",
+                "@id": "https://mindframeindia.com/about-us#webpage",
+                "url": "https://mindframeindia.com/about-us",
+                "name": "About Mindframe India - Our Mission, Vision & Expert Team",
+                "description": "Learn about Mindframe India - our history, expertise, and full-service advertising & digital marketing capabilities in Mumbai and globally.",
+                "about": {
+                  "@id": "https://mindframeindia.com/#organization"
+                }
+              },
+              {
+                "@type": "AdvertisingAgency",
+                "@id": "https://mindframeindia.com/#organization",
+                "name": "Mind Frame India",
+                "url": "https://mindframeindia.com",
+                "logo": "https://mindframeindia.com/assets/favicon.png",
+                "image": "https://mindframeindia.com/og-image.png",
+                "foundingDate": "2009-10-06",
+                "description": "Mind Frame India is a full-service advertising, branding, and digital marketing agency established in 2009, with offices in Mumbai, Hyderabad, Dubai, and California.",
+                "telephone": "+91 9892000733",
+                "email": "info@mindframeindia.com",
+                "priceRange": "$$",
+                "address": {
+                  "@type": "PostalAddress",
+                  "streetAddress": "6th Floor Bhukanvala Chambers, B-22, Off Link Road, Veera Desai Rd, Andheri West",
+                  "addressLocality": "Mumbai",
+                  "addressRegion": "Maharashtra",
+                  "postalCode": "400053",
+                  "addressCountry": "IN"
+                },
+                "areaServed": [
+                  {
+                    "@type": "AdministrativeArea",
+                    "name": "Mumbai"
+                  },
+                  {
+                    "@type": "AdministrativeArea",
+                    "name": "Hyderabad"
+                  },
+                  {
+                    "@type": "Country",
+                    "name": "India"
+                  },
+                  {
+                    "@type": "Country",
+                    "name": "United Arab Emirates"
+                  },
+                  {
+                    "@type": "Country",
+                    "name": "United States"
+                  }
+                ],
+                "knowsAbout": [
+                  "Television Advertising",
+                  "Digital Marketing",
+                  "Branding",
+                  "Media Buying",
+                  "Media Planning",
+                  "Creative Design",
+                  "Augmented Reality",
+                  "Virtual Reality",
+                  "2D Animation",
+                  "3D Animation"
+                ],
+                "sameAs": [
+                  "https://www.facebook.com/mindframeindia",
+                  "https://twitter.com/mindframeindia",
+                  "https://www.instagram.com/mindframeindia",
+                  "https://www.linkedin.com/company/mindframe-india"
+                ]
+              },
+              {
+                "@type": "FAQPage",
+                "@id": "https://mindframeindia.com/about-us#faq",
+                "mainEntity": faqs.map((faq) => ({
+                  "@type": "Question",
+                  "name": faq.question,
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": faq.answer
+                  }
+                }))
+              }
+            ]
+          })
+        }}
+      />
     </>
   );
 }
