@@ -50,7 +50,7 @@ export default function Footer() {
 
   const quickLinks = [
     { label: 'About Us', to: '/about-us', external: false },
-    { label: 'Our Team', to: '/our-team', external: false },
+    // { label: 'Our Team', to: '/our-team', external: false },
     { label: 'Our Work', to: '/creative-communication-and-advertising-campaigns', external: false },
     { label: 'Brand Presentation', to: '/services/branding-agency-in-mumbai', external: false },
     { label: 'Blogs', to: '/blogs', external: false },
