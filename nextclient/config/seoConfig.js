@@ -83,14 +83,14 @@ export const seoConfig = {
     type: 'website',
   },
 
-  team: {
-    title: 'Our Team - Meet the Mindframe India Experts',
-    description:
-      'Meet the talented and experienced team at Mindframe India. Discover the creative minds behind our successful campaigns and innovative solutions.',
-    keywords: 'our team, team members, experts, staff, creative team, leadership, mindframe team',
-    path: '/our-team',
-    type: 'website',
-  },
+  // team: {
+  //   title: 'Our Team - Meet the Mindframe India Experts',
+  //   description:
+  //     'Meet the talented and experienced team at Mindframe India. Discover the creative minds behind our successful campaigns and innovative solutions.',
+  //   keywords: 'our team, team members, experts, staff, creative team, leadership, mindframe team',
+  //   path: '/our-team',
+  //   type: 'website',
+  // },
 
   privacy: {
     title: 'Privacy Policy - Mindframe India',
