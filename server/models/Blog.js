@@ -52,7 +52,7 @@ const blogSchema = new mongoose.Schema(
     },
     category: {
       type: String,
-      enum: ['Marketing', 'Social Media', 'SEO', 'Content', 'Design', 'Other'],
+      enum: ['Marketing', 'Social Media',  'Other'],
       default: 'Other',
     },
     featured: {

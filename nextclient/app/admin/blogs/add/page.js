@@ -182,7 +182,7 @@ useEffect(() => {
                 style={{ ...inputStyle }}
                 disabled={loading || uploadingImage}
               >
-                {['Marketing', 'Social Media', 'SEO', 'Content', 'Design', 'Other'].map(c => (
+                {['Marketing', 'Social Media',  'Other'].map(c => (
                   <option key={c} value={c}>{c}</option>
                 ))}
               </select>

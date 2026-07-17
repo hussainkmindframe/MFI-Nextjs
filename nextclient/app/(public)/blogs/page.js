@@ -20,7 +20,9 @@ export default function Blogs() {
   const [totalPages, setTotalPages] = useState(0);
   const [totalBlogs, setTotalBlogs] = useState(0);
   
-  const categories = ['Marketing', 'Social Media', 'SEO', 'Content', 'Design'];
+  // const categories = ['Marketing', 'Social Media', 'SEO', 'Content', 'Design'];
+    const categories = ['Marketing', 'Social Media'];
+
 
   useEffect(() => {
     const fetchBlogs = async () => {
