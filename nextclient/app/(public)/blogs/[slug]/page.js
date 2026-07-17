@@ -277,7 +277,7 @@ export default function SingleBlog() {
         )}
 
         {/* Title */}
-        <h1 className="sb-title">{blog.title}</h1>
+        {/* <h1 className="sb-title">{blog.title}</h1> */}
 
         {/* Meta */}
         <div className="sb-meta">
@@ -295,7 +295,7 @@ export default function SingleBlog() {
 
         {/* Description */}
         {blog.description && (
-          <p className="sb-desc">{blog.description}</p>
+          <h1 className="sb-title">{blog.description}</h1>
         )}
 
         {/* Tags */}

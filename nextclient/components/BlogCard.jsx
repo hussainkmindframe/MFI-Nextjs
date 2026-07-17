@@ -234,10 +234,12 @@ export default function BlogCard({ blog }) {
           )}
 
           {/* Title */}
-          <h3 className="bc-title">{blog.title}</h3>
+          {/* <h3 className="bc-title">{blog.title}</h3> */}
 
           {/* Description */}
-          <p className="bc-desc">{truncateText(blog.description, 120)}</p>
+          {/* <h3 className="bc-desc">{truncateText(blog.description, 120)}</h3> */}
+         <h3 className="bc-title">{truncateText(blog.description, 120)}</h3>
+
 
           {/* Meta */}
           <div className="bc-meta">
