@@ -513,7 +513,7 @@ export default function About() {
           className="about-title"
           style={{ fontSize: 32, fontWeight: 900, textAlign: 'center', margin: '0 0 40px', letterSpacing: 0 }}
         >
-          About Us
+          About us
         </h1>
 
         {/* Top Two Column */}
