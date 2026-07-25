@@ -722,11 +722,11 @@ export default function Home() {
           playsInline
           style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0 }}
         >
-          {/* <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" /> */}
-        <source src="https://videos.pexels.com/video-files/1851190/1851190-hd_1920_1080_25fps.mp4" type="video/mp4" />
+        <source src="/assets/MFI-VIDEO2.mp4" type="video/mp4" />
+        {/* <source src="https://videos.pexels.com/video-files/1851190/1851190-hd_1920_1080_25fps.mp4" type="video/mp4" /> */}
         </video>
         {/* Dark overlay */}
-        <div style={{ position: 'absolute', inset: 0, background: 'rgba(10,10,20,0.62)', zIndex: 1 }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'rgba(10,10,20,0.35)', zIndex: 1 }} />
 
         {/* Content */}
         <div style={{ position: 'relative', zIndex: 2, textAlign: 'center', padding: '0 20px', maxWidth: 900, margin: '0 auto' }}>
