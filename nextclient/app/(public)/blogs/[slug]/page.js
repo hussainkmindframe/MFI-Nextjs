@@ -77,13 +77,19 @@ export default function SingleBlog() {
         /* ── HERO IMAGE ── */
         .sb-hero {
           position: relative;
-          width: 100%; height: 480px;
-          overflow: hidden; background: #111;
+          width: 100vw;
+          max-width: 100%;
+          overflow: hidden;
+          background: #111;
+          min-height: 200px;
         }
         .sb-hero img {
-          width: 100%; height: 100%;
-          object-fit: cover; object-position: center;
+          width: 100%;
+          height: auto;
+          max-width: 100%;
           display: block;
+          object-fit: contain;
+          object-position: center;
         }
         .sb-hero-overlay {
           position: absolute; inset: 0;
@@ -92,6 +98,7 @@ export default function SingleBlog() {
             rgba(0,0,0,0.18) 0%,
             rgba(0,0,0,0.55) 100%
           );
+          pointer-events: none;
         }
 
         /* ── ARTICLE WRAP ── */
