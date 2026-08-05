@@ -37,11 +37,7 @@ export const blogService = {
   uploadImage: (file) => {
     const formData = new FormData();
     formData.append('image', file);
-    return apiClient.post('/blogs/upload-image', formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-    });
+    return apiClient.post('/blogs/upload-image', formData);
   },
 };
 

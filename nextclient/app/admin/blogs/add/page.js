@@ -46,35 +46,27 @@ useEffect(() => {
 
 
   const handleImageUpload = async (e) => {
-  const file = e.target.files?.[0];
-  if (!file) return;
+    const file = e.target.files?.[0];
+    if (!file) return;
 
-  const MAX_SIZE = 2 * 1024 * 1024;
-  if (file.size > MAX_SIZE) {
-    toast.error('Image size must be under 2MB');
-    e.target.value = '';
-    return;
-  }
+    const MAX_SIZE = 2 * 1024 * 1024;
+    if (file.size > MAX_SIZE) {
+      toast.error('Image size must be under 2MB');
+      e.target.value = '';
+      return;
+    }
 
-  setUploadingImage(true);
-  try {
-    const formDataForUpload = new FormData();
-    formDataForUpload.append('image', file);
-    const response = await fetch('/api/blogs/upload-image', {
-      method: 'POST',
-      headers: { 'Authorization': `Bearer ${localStorage.getItem('authToken')}` },
-      body: formDataForUpload,
-    });
-    if (!response.ok) throw new Error('Image upload failed');
-    const data = await response.json();
-    setFormData({ ...formData, image: data.image, imagePublicId: data.imagePublicId });
-    toast.success('Image uploaded successfully!');
-  } catch (error) {
-    toast.error('Failed to upload image');
-  } finally {
-    setUploadingImage(false);
-  }
-};
+    setUploadingImage(true);
+    try {
+      const response = await blogService.uploadImage(file);
+      setFormData({ ...formData, image: response.data.image, imagePublicId: response.data.imagePublicId });
+      toast.success('Image uploaded successfully!');
+    } catch (error) {
+      toast.error('Failed to upload image');
+    } finally {
+      setUploadingImage(false);
+    }
+  };
 
 
   const handleSubmit = async (e) => {
