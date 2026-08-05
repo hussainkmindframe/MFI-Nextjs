@@ -94,16 +94,8 @@ useEffect(() => {
     if (!file) return;
     setUploadingImage(true);
     try {
-      const formDataForUpload = new FormData();
-      formDataForUpload.append('image', file);
-      const response = await fetch('/api/blogs/upload-image', {
-        method: 'POST',
-        headers: { 'Authorization': `Bearer ${localStorage.getItem('authToken')}` },
-        body: formDataForUpload,
-      });
-      if (!response.ok) throw new Error('Image upload failed');
-      const data = await response.json();
-      setEditFormData({ ...editFormData, image: data.image, imagePublicId: data.imagePublicId });
+      const response = await blogService.uploadImage(file);
+      setEditFormData({ ...editFormData, image: response.data.image, imagePublicId: response.data.imagePublicId });
       toast.success('Image uploaded successfully!');
     } catch (error) {
       toast.error('Failed to upload image');
