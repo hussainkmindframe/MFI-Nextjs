@@ -208,13 +208,13 @@ export const newsData = {
     },
     {
       id: 17,
-      slug: "ayuska-avach-crafting-longevity-real-estate",
-      title: "Ayuska by Avach: Crafting Longevity in Real Estate Marketing",
+      slug: "ayuska-avadh-crafting-longevity-real-estate",
+      title: "Ayuska by Avadh: Crafting Longevity in Real Estate Marketing",
       year: "2021",
       category: "Real Estate, Brand Strategy",
       image: img9,
       images: [img9],
-      desc: "Building long-term brand equity in real estate requires more than launch campaigns — it demands sustained storytelling. Mind Frame India's ongoing strategy for Ayuska by Avach focused on building community, nurturing leads through the long sales cycle, and creating content that kept the brand top-of-mind for buyers making one of the most important decisions of their lives.",
+      desc: "Building long-term brand equity in real estate requires more than launch campaigns — it demands sustained storytelling. Mind Frame India's ongoing strategy for Ayuska by Avadh focused on building community, nurturing leads through the long sales cycle, and creating content that kept the brand top-of-mind for buyers making one of the most important decisions of their lives.",
     },
   ],
   2020: [
