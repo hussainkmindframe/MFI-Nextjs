@@ -44,7 +44,7 @@ export const createContact = async (req, res, next) => {
     if (hasRecent) {
       return res.status(429).json({
         success: false,
-        message: 'You have already submitted a contact form. Please wait 1 minute before trying again.'
+        message: 'You have reached the maximum of 2 contact form submissions within 24 hours. Please try again tomorrow.'
       });
     }
 

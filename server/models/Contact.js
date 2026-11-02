@@ -70,13 +70,16 @@ contactSchema.methods.toJSON = function() {
   return obj;
 };
 
-// Static method for spam prevention
+// Static method for spam prevention check if submited more than 2 times in 24 hours
 contactSchema.statics.hasRecentSubmission = async function(email, phone) {
-  const recent = await this.findOne({
+  const recentCount = await this.countDocuments({
     $or: [{ email }, { phone }],
-    createdAt: { $gte: new Date(Date.now() - 60 * 1000) }
+    createdAt: {
+      $gte: new Date(Date.now() - 24 * 60 * 60 * 1000)
+    }
   });
-  return !!recent;
+
+  return recentCount >= 2;
 };
 
 const Contact = mongoose.model('Contact', contactSchema);
