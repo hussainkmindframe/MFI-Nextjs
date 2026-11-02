@@ -74,7 +74,7 @@ contactSchema.methods.toJSON = function() {
 contactSchema.statics.hasRecentSubmission = async function(email, phone) {
   const recent = await this.findOne({
     $or: [{ email }, { phone }],
-    createdAt: { $gte: new Date(Date.now() - 24 * 60 * 60 * 1000) }
+    createdAt: { $gte: new Date(Date.now() - 60 * 1000) }
   });
   return !!recent;
 };
