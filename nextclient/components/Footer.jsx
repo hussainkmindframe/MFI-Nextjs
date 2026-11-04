@@ -414,51 +414,52 @@ export default function Footer() {
         </div>
       </div>
 
-      <Link
-        href="/contact-us"
-        aria-label="Contact us"
-        title="Contact us"
-        style={{
-          position: "fixed",
-          right: 20,
-          bottom: 20,
-          width: 55,
-          height: 55,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          backgroundColor: "#ffffff",
-          borderRadius: "50%",
-          boxShadow: "0 3px 12px #c9a84c",
-          zIndex: 9999,
-          textDecoration: "none",
-          animation: "contactFloat 3s ease-in-out infinite",
-        }}
-      >
-        <img
-          src="/assets/phone-icon.png"
-          alt="Contact"
-          style={{
-            width: 35,
-            height: 35,
-            objectFit: "contain",
-          }}
-        />
+<Link
+  href="/contact-us"
+  aria-label="Enquire Now"
+  className="enquire-now-btn"
+>
+  Enquire Now
 
-        <style jsx>{`
-          @keyframes contactFloat {
-            0%,
-            100% {
-              transform: translateY(0);
-              box-shadow: 0 3px 12px #c9a84c;
-            }
-            50% {
-              transform: translateY(-4px);
-              box-shadow: 0 4px 16px #c9a84c;
-            }
-          }
-        `}</style>
-      </Link>
+  <style jsx>{`
+    :global(.enquire-now-btn) {
+      position: fixed;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%) rotate(180deg);
+      writing-mode: vertical-rl;
+      padding: 12px 8px;
+      background-color: #c9a84c;
+      color: #ffffff;
+      border-radius: 8px 0px 0px 8px;
+      z-index: 99999;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      box-shadow: 0 3px 12px rgba(201, 168, 76, 0.3);
+      white-space: nowrap;
+    }
+
+    @media (max-width: 768px) {
+      :global(.enquire-now-btn) {
+        top: 70% !important;
+        padding: 9px 5px;
+        font-size: 11px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      :global(.enquire-now-btn) {
+        top: 70% !important;
+        padding: 7px 4px;
+        font-size: 10px;
+      }
+    }
+  `}</style>
+</Link>
+
+      
     </footer>
   );
 }
