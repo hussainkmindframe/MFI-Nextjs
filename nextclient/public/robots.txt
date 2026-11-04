@@ -1,0 +1,22 @@
+# Robots.txt for Mindframe India
+# Allows search engines to crawl all pages
+
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /_next/
+Disallow: /*.json$
+Disallow: /api/
+
+# Specific bot rules
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Crawl delay (optional - prevents server overload)
+Crawl-delay: 1
+
+# Sitemaps
+Sitemap: https://mindframeindia.com/sitemap.xml
